@@ -106,7 +106,7 @@ def filter_sequences(idfile, fastqfile, filtered_fastq, write_remaining=False):
         os.system("rm  "+filtered_fastq)
     if not (os.path.isfile(filtered_fastq)):
         if BE_VERBOSE: print ("Grepping sequences from "+fastqfile+"...")
-        os.system("grep -A 3 --no-group-separator -f "+idfile+" "+fastqfile+" > "+filtered_fastq)
+        os.system("grep -A 1 --no-group-separator -w  -f "+idfile+" "+fastqfile+" > "+filtered_fastq)
         if BE_VERBOSE: print ("Done grepping sequences from "+fastqfile+".")
     else:
         if BE_VERBOSE: print ("Skipping grepping sequences from "+fastqfile+".")
@@ -119,7 +119,7 @@ def filter_sequences(idfile, fastqfile, filtered_fastq, write_remaining=False):
         if not (os.path.isfile(remaining_fastqfile)):
             if BE_VERBOSE: print ("Grepping non-T-DNA sequences from "+fastqfile+"...")
             os.system("grep '^@.*runid' "+fastqfile+" | grep -v -f "+idfile+" > "+remaining_idfile)
-            os.system("grep -A 3 --no-group-separator -f "+remaining_idfile+" "+fastqfile+" > "+remaining_fastqfile) 
+            os.system("grep -A 1 --no-group-separator -w -f "+remaining_idfile+" "+fastqfile+" > "+remaining_fastqfile) 
             if BE_VERBOSE: print ("Done grepping non-T-DNA sequences from "+fastqfile+".")
         else:
             if BE_VERBOSE: print ("Skipping grepping non-T-DNA sequences from "+fastqfile+".")
@@ -294,7 +294,7 @@ def get_length_for_reads(fastqfile, fasta=False):
         for line in fh:
             linecount += 1
             if linecount == 1:
-                match_line = re.match("^@(\S+)\srunid=.*", line)
+                match_line = re.match("^@(\S+)\s.*", line)
                 if match_line is not None: 
                     read_match = match_line.groups()
                     read = read_match[0]
