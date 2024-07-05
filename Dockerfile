@@ -98,7 +98,7 @@ RUN wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.10.1/ncbi-blast
 
 #Install tdna_nanopore
 RUN apt-get install -y git && \
-    git clone https://github.com/nkleinbo/loreta/ && \
+    git clone https://github.com/Rdmitche/loreta/ && \
     gunzip loreta/references/*.gz
 
 

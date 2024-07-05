@@ -201,6 +201,11 @@ Then build the docker image:
 cd loreta
 sudo docker build -t loreta .
 ```
+Build if on Mac M1
+```bash
+cd loreta
+sudo docker buildx --platform linux/amd64 -t loreta .
+```
 
 Then start the tool, you will need to mount all local directories that contain data into the container. In this example, all our data is in ~/data/ and is mounted to /data in the docker image:
 ```bash
