@@ -194,7 +194,7 @@ sudo apt install docker.io
 You will need the docker file, so just clone the repository:
 
 ```bash
-git clone [https://github.com/nkleinbo/loreta](https://github.com/Rdmitche/loreta)
+git clone https://github.com/Rdmitche/loreta
 ```
 Then build the docker image:
 ```bash
