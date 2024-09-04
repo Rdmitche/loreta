@@ -209,7 +209,7 @@ sudo docker buildx --platform linux/amd64 -t loreta .
 
 Then start the tool, you will need to mount all local directories that contain data into the container. In this example, all our data is in ~/data/ and is mounted to /data in the docker image:
 ```bash
-sudo docker run --name loreta_container -v ~/data/:/data/ --rm -i -t loreta bash
+sudo docker run --name loreta_container -v ~/data/:/data/ --rm -i -t rdmitche107/loreta bash
 ```
 This will start an interactive shell inside the container with your ~/data/ (containing a folder "input_data" with your input data) directory mounted to /data. You can then go on running the tool:
 ```bash
